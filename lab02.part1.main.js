@@ -116,14 +116,10 @@ function main() {
       // Now we are inside the callback function.
       // Display the results on the console.
       if (error) {
-          let data="null";let mappedAddress="null";
         console.error(`  Error returned from GET request: ${error}`);
-        console.log(`  Response returned from GET request: {"ipv4":${data},"ipv6":${mappedAddress}}`);
       }
-      if(data !== null) {
-      let mappedAddress= getIpv4MappedIpv6Address(data);
-        console.log(`  Response returned from GET request: {"ipv4":${data},"ipv6":${mappedAddress}}`);
-    }});
+      console.log(`  Response returned from GET request: ${data}`);
+    });
   }
   // Iterate over sampleIpv4s and pass the element's value to getIpv4MappedIpv6Address().
   for (let i = 0; i < sampleIpv4sLen; i++) {
@@ -131,7 +127,7 @@ function main() {
     // Assign the function results to a variable so we can check if a string or null was returned.
     let mappedAddress = getIpv4MappedIpv6Address(sampleIpv4s[i]);
     if( mappedAddress ) {
-        console.log(`  IPv4 ${sampleIpv4s[i]} mapped to IPv6 Address: ${mappedAddress}`);
+      console.log(`  IPv4 ${sampleIpv4s[i]} mapped to IPv6 Address: ${mappedAddress}`);
     } else {
       console.error(`  Problem converting IPv4 ${sampleIpv4s[i]} into a mapped IPv6 address.`);
     }
